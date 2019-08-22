@@ -7,20 +7,20 @@
 1) 	Query 1
 ```SQL
 SELECT 
-		ANY_VALUE(DAY(date)) as 'day',
-		ANY_VALUE(SUM(CASE WHEN score > 0 THEN score ELSE 0 END)) as 'num_pos_scores',
-		ANY_VALUE(SUM(CASE WHEN score < 0 THEN score ELSE 0 END)) as 'num_neg_scores'
-	FROM assessments
-	WHERE date BETWEEN '2011-03-01' AND '2011-05-01'
-	GROUP BY day
+	ANY_VALUE(DAY(date)) as 'day',
+	ANY_VALUE(SUM(CASE WHEN score > 0 THEN score ELSE 0 END)) as 'num_pos_scores',
+	ANY_VALUE(SUM(CASE WHEN score < 0 THEN score ELSE 0 END)) as 'num_neg_scores'
+FROM assessments
+WHERE date BETWEEN '2011-03-01' AND '2011-05-01'
+GROUP BY day
 ```
 2) 	Query 2
 ```SQL
 SELECT
-		DAY(date),
-		score
-	FROM assessments
-	where score > 0 AND date BETWEEN '2011-01-01' AND '2011-05-01'
+	DAY(date),
+	score
+FROM assessments
+WHERE score > 0 AND date BETWEEN '2011-01-01' AND '2011-05-01'
 ```
 
 
@@ -41,7 +41,7 @@ function getPrimes(numb) {
 	while (listNumb.length) {
 		// add first numb from list numb to prime
 		primes.push(listNumb.shift())
-		// re-assign list numb = (filter list numb, remove item where modulus division with new item in prime is not 0)
+		// re-assign list numb = (filter list numb, remove item where modulus division with item in prime is 0)
 		listNumb = listNumb.filter(i => i % primes[primes.length - 1] !== 0)
 	}
 
